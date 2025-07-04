@@ -73,11 +73,6 @@
             border-color: #007bff;
             outline: none;
         }
-        .instruction {
-            font-size: 0.9em;
-            color: #777;
-            margin-bottom: 5px;
-        }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -99,7 +94,7 @@
     <h2>Nos Services</h2>
     <p>Nous offrons une aide complète en mathématiques. Remplissez le formulaire ci-dessous :</p>
     
-    <form action="https://formspree.io/xblybnvv" method="POST" enctype="multipart/form-data">
+    <form id="mathForm" action="https://formspree.io/xblybnvv" method="POST">
         <label for="name">Votre nom :</label>
         <p class="instruction">Entrez votre nom complet.</p>
         <input type="text" id="name" name="name" required>
@@ -112,17 +107,15 @@
         <p class="instruction">Entrez votre numéro de téléphone.</p>
         <input type="tel" id="phone" name="phone" required>
 
-        <label for="file">Téléchargez votre fichier :</label>
-        <p class="instruction">Veuillez télécharger le fichier dont vous avez besoin d'aide.</p>
-        <input type="file" id="file" name="file" required>
-
         <button type="submit">Soumettre</button>
     </form>
 </div>
 
 <script>
     document.getElementById('mathForm').addEventListener('submit', function(event) {
-        alert("Merci ! Votre demande a été soumise avec succès. Nous vous contacterons bientôt.");
+        event.preventDefault(); // Empêche la soumission par défaut
+        alert("Merci ! Votre demande a été soumise avec succès. Nous vous contacterons bientôt.\n\nVeuillez joindre le fichier PDF de l'épreuve de mathématiques que vous souhaitez corriger.");
+        this.submit(); // Soumet le formulaire après l'alerte
     });
 </script>
 
